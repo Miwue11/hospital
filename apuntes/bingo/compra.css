@@ -1,0 +1,20 @@
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.GDE {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
