@@ -85,24 +85,21 @@ const obtenPacientesAsignadosAPediatria = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
   console.log("asignados a pediatria:");
-  pacientes.filter((paciente: Pacientes) => {
-    if (paciente.especialidad === "Pediatra") {
-      console.log(paciente);
-    }
-  });
-  return pacientes;
+  const pacientesEnPediiatria = pacientes.filter(
+    (paciente: Pacientes) => paciente.especialidad === "Pediatra"
+  );
+  return pacientesEnPediiatria;
 };
 
 const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
   console.log("asignados a pediatria y menores de 10 años:");
-  pacientes.filter((paciente: Pacientes) => {
-    if (paciente.especialidad === "Pediatra" && paciente.edad < 10) {
-      console.log(paciente);
-    }
-  });
-  return pacientes;
+  const pacientesEnPediiatriaYMenorDeDiezAños = pacientes.filter(
+    (paciente: Pacientes) =>
+      paciente.especialidad === "Pediatra" && paciente.edad < 10
+  );
+  return pacientesEnPediiatriaYMenorDeDiezAños;
 };
 
 const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
@@ -115,8 +112,7 @@ const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
   console.log("activar protocolo de urgencia");
   return activarProctolo;
 };
-
-//esto lo hgo con un array nuevo para no estar modificando el inicial
+//lo reasigno en uno nuevo por q no creo q se quiera modifciar el inicial
 const reasignaPacientesAMedicoFamilia = (
   pacientes: Pacientes[]
 ): Pacientes[] => {
@@ -128,11 +124,10 @@ const reasignaPacientesAMedicoFamilia = (
     return paciente;
   });
   pacientesCorregidos.push(...nuevosPacientes);
-  console.log(pacientesCorregidos);
   return nuevosPacientes;
 };
 
-//aqui elijo el array nuevo por motivos obvios
+//aqui elijo el array nuevo por q creo q es el q se busca contabilizar, sino solo es cambiar un array por otro en el eventos()
 const HayPacientesDePediatria = (pacientesCorregidos: Pacientes[]): boolean => {
   let hayPacientesDePediatria = false;
   pacientesCorregidos.find((paciente: Pacientes) => {
@@ -141,10 +136,9 @@ const HayPacientesDePediatria = (pacientesCorregidos: Pacientes[]): boolean => {
     }
   });
   console.log("hay pacientes de pediatria");
-  console.log(pacientesCorregidos);
   return hayPacientesDePediatria;
 };
-//cuento desde al array inicial por q creo q es el se busca contabilizar, sino solo es cambiar un array por otro
+//cuento desde al array inicial de pacientes por q creo q es el se busca contabilizar, sino solo es cambiar un array por otro en el eventos()
 const cuentaPacientesPorEspecialidad = (
   pacientes: Pacientes[]
 ): NumeroPacientesPorEspecialidad => {
@@ -161,16 +155,15 @@ const cuentaPacientesPorEspecialidad = (
     }
   });
   console.log("numero de pacientes por especialidad");
-  console.log({ medicoDeFamilia, pediatria, cardiologia });
   return { medicoDeFamilia, pediatria, cardiologia };
 };
 
 const eventos = () => {
-  obtenPacientesAsignadosAPediatria(pacientes);
-  obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes);
+  console.log(obtenPacientesAsignadosAPediatria(pacientes));
+  console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
   console.log(activarProtocoloUrgencia(pacientes));
-  reasignaPacientesAMedicoFamilia(pacientes);
+  console.log(reasignaPacientesAMedicoFamilia(pacientes));
   console.log(HayPacientesDePediatria(pacientesCorregidos));
-  cuentaPacientesPorEspecialidad(pacientes);
+  console.log(cuentaPacientesPorEspecialidad(pacientes));
 };
 eventos();
