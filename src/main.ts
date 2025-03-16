@@ -106,7 +106,7 @@ const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
   let activarProctolo = false;
   pacientes.some((paciente: Pacientes) => {
     if (paciente.temperatura > 39.5 && paciente.frecuenciaCardiaca > 100) {
-      activarProctolo;
+      activarProctolo = true;
     }
   });
   console.log("activar protocolo de urgencia");
@@ -132,7 +132,7 @@ const HayPacientesDePediatria = (pacientesCorregidos: Pacientes[]): boolean => {
   let hayPacientesDePediatria = false;
   pacientesCorregidos.find((paciente: Pacientes) => {
     if (paciente.especialidad === "Pediatra") {
-      hayPacientesDePediatria;
+      hayPacientesDePediatria = true;
     }
   });
   console.log("hay pacientes de pediatria");
@@ -158,12 +158,9 @@ const cuentaPacientesPorEspecialidad = (
   return { medicoDeFamilia, pediatria, cardiologia };
 };
 
-const eventos = () => {
-  console.log(obtenPacientesAsignadosAPediatria(pacientes));
-  console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
-  console.log(activarProtocoloUrgencia(pacientes));
-  console.log(reasignaPacientesAMedicoFamilia(pacientes));
-  console.log(HayPacientesDePediatria(pacientesCorregidos));
-  console.log(cuentaPacientesPorEspecialidad(pacientes));
-};
-eventos();
+console.log(obtenPacientesAsignadosAPediatria(pacientes));
+console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes));
+console.log(activarProtocoloUrgencia(pacientes));
+console.log(reasignaPacientesAMedicoFamilia(pacientes));
+console.log(HayPacientesDePediatria(pacientesCorregidos));
+console.log(cuentaPacientesPorEspecialidad(pacientes));
